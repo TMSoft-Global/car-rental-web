@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "firstName": "Michael",
+      "lastName": "Tamakloe",
+      "email": "michaeltamekloe18.mt@gmail.com",
+      "phone": "0554302776",
+      "password": "12345678",
+      "type": "signup",
+      "id": "1767572499974",
+      "createdAt": "2026-01-05T00:21:39.974Z",
+      "status": "pending"
+    }
+  ],
+  "logins": [
+    {
+      "email": "michaeltamekloe18.mt@gmail.com",
+      "password": "12345",
+      "rememberMe": false,
+      "type": "login",
+      "id": "1767572428921",
+      "timestamp": "2026-01-05T00:20:28.921Z"
+    },
+    {
+      "email": "michaeltamekloe18.mt@gmail.com",
+      "password": "1234567777",
+      "rememberMe": false,
+      "type": "login",
+      "id": "1767572747149",
+      "timestamp": "2026-01-05T00:25:47.149Z"
+    }
+  ]
+}

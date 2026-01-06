@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #2563eb;
-  --secondary: #1e40af;
+  --primary: #13264C;
+  --secondary: #203560;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+  @apply bg-[#13264C] hover:bg-[#13264C] text-white font-medium py-2 px-4 rounded-lg transition duration-200;
 }
 
 .btn-secondary {

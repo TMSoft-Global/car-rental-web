@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { saveLogin } from '@/lib/users';
+import { saveLogin, findUserByEmail } from '@/lib/users';
 
 export async function POST(request) {
   try {
@@ -11,6 +11,15 @@ export async function POST(request) {
       return NextResponse.json(
         { error: 'Email and password are required' },
         { status: 400 }
+      );
+    }
+
+    const existingUser = findUserByEmail(email);
+
+    if (!existingUser) {
+      return NextResponse.json(
+        { error: 'Account not found' },
+        { status: 404 }
       );
     }
 

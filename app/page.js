@@ -104,7 +104,7 @@ export default function Home() {
               onClick={() => setActiveTab(tab)}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
                 activeTab === tab
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  ? 'bg-[#13264C] text-white shadow-lg scale-105'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >
@@ -119,7 +119,7 @@ export default function Home() {
               onClick={() => setCountryFilter(c.value)}
               className={`px-5 py-2 rounded-full font-medium transition-all duration-200 flex items-center gap-2 ${
                 countryFilter === c.value
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  ? 'bg-[#13264C] text-white shadow-lg scale-105'
                   : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
               }`}
             >

@@ -110,7 +110,7 @@ export default function ContactPage() {
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700">
+                  <a href="#" className="w-10 h-10 bg-[#13264C] text-white rounded-lg flex items-center justify-center hover:bg-[#13264C]">
                     <span className="text-lg">f</span>
                   </a>
                   <a href="#" className="w-10 h-10 bg-blue-400 text-white rounded-lg flex items-center justify-center hover:bg-blue-500">

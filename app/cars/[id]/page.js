@@ -35,7 +35,7 @@ export default async function CarDetailPage({ params }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Car Image */}
         <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden">
-          <Image
+          <img
             src={car.image}
             alt={car.name}
             fill

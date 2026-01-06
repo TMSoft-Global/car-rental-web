@@ -11,9 +11,9 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">Browse Cars</a></li>
-              <li><a href="#" className="hover:text-white">How it Works</a></li>
-              <li><a href="#" className="hover:text-white">FAQs</a></li>
+              <li><a href="/" className="hover:text-white">Browse Cars</a></li>
+              <li><a href="/about" className="hover:text-white">How it Works</a></li>
+              <li><a href="/faq" className="hover:text-white">FAQs</a></li>
             </ul>
           </div>
           
@@ -29,8 +29,8 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Legal</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+              <li><a href="/privacy" className="hover:text-white">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-white">Terms of Service</a></li>
               <li><a href="#" className="hover:text-white">Insurance Info</a></li>
             </ul>
           </div>

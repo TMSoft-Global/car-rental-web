@@ -35,7 +35,12 @@ export default function LoginPage() {
       if (response.ok) {
         router.push('/pending');
       } else {
-        setError(result.error || 'Something went wrong');
+        if (response.status === 404) {
+          setError('Account not found. Redirecting to sign up...');
+          setTimeout(() => router.push('/signup'), 1200);
+        } else {
+          setError(result.error || 'Something went wrong');
+        }
         setIsSubmitting(false);
       }
     } catch (error) {

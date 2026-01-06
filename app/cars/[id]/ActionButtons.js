@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function ActionButtons() {
   const router = useRouter();
 
-  const handleRentNow = () => {
+  const handleBuyNow = () => {
     router.push('/login');
   };
 
@@ -16,10 +16,10 @@ export default function ActionButtons() {
   return (
     <div className="flex space-x-4">
       <button 
-        onClick={handleRentNow}
+        onClick={handleBuyNow}
         className="flex-grow btn-primary py-4 text-lg"
       >
-        Rent Now
+        Buy Now
       </button>
       <button 
         onClick={handleSaveForLater}

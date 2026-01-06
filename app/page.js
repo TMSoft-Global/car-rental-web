@@ -6,16 +6,21 @@ import { cars } from './data/cars';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('All Cars');
+  const [countryFilter, setCountryFilter] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const filterCars = (tab) => {
-    if (tab === 'All Cars') {
-      return cars;
-    }
-    
-    return cars.filter((car) => {
+  const filterCars = (tab, country, search) => {
+    const normalizedSearch = search.trim().toLowerCase();
+
+    const baseFiltered = cars.filter((car) => {
+      const countryMatch = country === 'All' ? true : car.country === country;
+      return countryMatch;
+    });
+
+    const typeFiltered = baseFiltered.filter((car) => {
       const type = car.type.toLowerCase();
       const fuelType = car.fuelType.toLowerCase();
-      
+
       switch (tab) {
         case 'Economy':
           return (type.includes('compact') || type.includes('hatchback') || 
@@ -33,11 +38,32 @@ export default function Home() {
           return true;
       }
     });
+
+    if (!normalizedSearch) {
+      return typeFiltered;
+    }
+
+    return typeFiltered.filter((car) => {
+      const haystack = [
+        car.name,
+        car.type,
+        car.fuelType,
+        car.transmission,
+        car.features?.join(' ') || ''
+      ].join(' ').toLowerCase();
+
+      return haystack.includes(normalizedSearch);
+    });
   };
 
-  const filteredCars = filterCars(activeTab);
+  const filteredCars = filterCars(activeTab, countryFilter, searchTerm);
 
   const tabs = ['All Cars', 'Economy', 'Luxury', 'SUV', 'Electric', 'Sports'];
+  const countryTabs = [
+    { label: 'All Countries', value: 'All', flag: '🌐' },
+    { label: 'USA', value: 'USA', flag: '🇺🇸' },
+    { label: 'UK', value: 'UK', flag: '🇬🇧' },
+  ];
 
   return (
     <div>
@@ -45,18 +71,24 @@ export default function Home() {
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Find Your Perfect Ride
+            Find Your Next Car
           </h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Choose from a wide range of premium vehicles at unbeatable prices
+            Shop a curated selection of new and used vehicles with transparent pricing
           </p>
           <div className="max-w-md mx-auto bg-white rounded-lg p-2 flex">
             <input
               type="text"
-              placeholder="Search cars by brand, type, or feature..."
+              placeholder="Search cars by brand, model, or feature..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="flex-grow px-4 py-3 text-gray-900 rounded-l-lg focus:outline-none"
             />
-            <button className="btn-secondary px-6 rounded-r-lg">
+            <button 
+              type="button"
+              onClick={() => setSearchTerm(searchTerm.trim())}
+              className="btn-secondary px-6 rounded-r-lg"
+            >
               Search
             </button>
           </div>
@@ -65,7 +97,7 @@ export default function Home() {
 
       {/* Filters */}
       <section className="container mx-auto px-4 py-8">
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-4 justify-center mb-6">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -77,6 +109,22 @@ export default function Home() {
               }`}
             >
               {tab}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-3 justify-center">
+          {countryTabs.map((c) => (
+            <button
+              key={c.value}
+              onClick={() => setCountryFilter(c.value)}
+              className={`px-5 py-2 rounded-full font-medium transition-all duration-200 flex items-center gap-2 ${
+                countryFilter === c.value
+                  ? 'bg-blue-600 text-white shadow-lg scale-105'
+                  : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+              }`}
+            >
+              <span>{c.flag}</span>
+              <span>{c.label}</span>
             </button>
           ))}
         </div>
@@ -103,22 +151,22 @@ export default function Home() {
       {/* Features Section */}
       <section className="bg-gray-100 py-12 mt-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose RentWheels</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Buy with BuyWheels</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-4xl mb-4">🚗</div>
               <h3 className="text-xl font-semibold mb-2">Wide Selection</h3>
-              <p className="text-gray-600">Choose from economy to luxury vehicles</p>
+              <p className="text-gray-600">From daily drivers to luxury models, all in one place</p>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">💰</div>
-              <h3 className="text-xl font-semibold mb-2">Best Prices</h3>
-              <p className="text-gray-600">Competitive rates with no hidden fees</p>
+              <h3 className="text-xl font-semibold mb-2">Clear Pricing</h3>
+              <p className="text-gray-600">Upfront totals, financing-friendly, no hidden fees</p>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">🛡️</div>
-              <h3 className="text-xl font-semibold mb-2">Fully Insured</h3>
-              <p className="text-gray-600">Comprehensive insurance included</p>
+              <h3 className="text-xl font-semibold mb-2">Trusted Quality</h3>
+              <p className="text-gray-600">Inspected vehicles with history transparency</p>
             </div>
           </div>
         </div>

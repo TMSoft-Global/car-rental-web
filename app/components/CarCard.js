@@ -12,7 +12,10 @@ export default function CarCard({ car }) {
           className="object-cover"
         />
         <div className="absolute top-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-          ${car.price}/day
+          ${car.price.toLocaleString()}
+        </div>
+        <div className="absolute top-3 left-3 bg-white/80 text-gray-900 px-3 py-1 rounded-full text-sm font-semibold backdrop-blur">
+          {car.country === 'UK' ? '🇬🇧 UK' : car.country === 'USA' ? '🇺🇸 USA' : car.country}
         </div>
       </div>
       

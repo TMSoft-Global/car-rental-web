@@ -4,8 +4,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">RentWheels</h3>
-            <p className="text-gray-400">Premium car rental service at affordable prices.</p>
+            <h3 className="text-2xl font-bold mb-4">BuyWheels</h3>
+            <p className="text-gray-400">Premium car buying with transparent pricing.</p>
           </div>
           
           <div>
@@ -20,7 +20,7 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Email: info@rentwheels.com</li>
+              <li>Email: info@BuyWheels.com</li>
               <li>Phone: +1 (555) 123-4567</li>
               <li>24/7 Support Available</li>
             </ul>
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} RentWheels. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} BuyWheels. All rights reserved.</p>
         </div>
       </div>
     </footer>

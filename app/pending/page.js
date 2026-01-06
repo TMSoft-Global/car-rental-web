@@ -32,7 +32,7 @@ export default function PendingPage() {
         </h2>
         
         <p className="text-gray-600 mb-6">
-          We're reviewing your information. You'll be notified once your account has been approved.
+          We're reviewing your details. You'll be notified once your buying profile is approved.
         </p>
         
         <div className="bg-blue-50 rounded-lg p-4 mb-6">
@@ -40,7 +40,7 @@ export default function PendingPage() {
             <strong>What happens next?</strong>
           </p>
           <ul className="text-sm text-gray-600 mt-2 text-left space-y-1">
-            <li>• We'll verify your information</li>
+            <li>• We'll verify your buyer information</li>
             <li>• You'll receive an email confirmation</li>
             <li>• Your account will be activated shortly</li>
           </ul>

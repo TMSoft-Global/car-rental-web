@@ -62,7 +62,7 @@ export default function SignupPage() {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-2xl shadow-lg">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-          <p className="mt-2 text-gray-600">Join RentWheels for the best car rental experience</p>
+          <p className="mt-2 text-gray-600">Join BuyWheels to shop and buy your next car</p>
         </div>
         
         {error && (

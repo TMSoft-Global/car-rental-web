@@ -50,7 +50,7 @@ export default async function CarDetailPage({ params }) {
           <p className="text-xl text-gray-600 mb-4">{car.type}</p>
           
           <div className="flex items-center mb-6">
-            <div className="text-3xl font-bold text-blue-600">${car.price}<span className="text-lg text-gray-500">/day</span></div>
+            <div className="text-3xl font-bold text-blue-600">${car.price.toLocaleString()}</div>
             <div className="ml-6 flex items-center">
               <span className="text-yellow-500 text-2xl">★</span>
               <span className="ml-2 text-xl font-medium">{car.rating}</span>
@@ -104,12 +104,12 @@ export default async function CarDetailPage({ params }) {
 
           {/* Additional Info */}
           <div className="mt-8 p-6 bg-blue-50 rounded-xl">
-            <h4 className="font-semibold mb-2">✅ Included in price:</h4>
+            <h4 className="font-semibold mb-2">✅ What you get:</h4>
             <ul className="text-gray-700 space-y-1">
-              <li>• Comprehensive insurance</li>
-              <li>• 24/7 roadside assistance</li>
-              <li>• Unlimited mileage</li>
-              <li>• Free cancellation up to 24 hours</li>
+              <li>• Vehicle history transparency</li>
+              <li>• Pre-purchase inspection checks</li>
+              <li>• Financing-friendly documentation</li>
+              <li>• Dedicated buyer support</li>
             </ul>
           </div>
         </div>

@@ -6,8 +6,8 @@ import Footer from './components/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'RentWheels - Premium Car Rental',
-  description: 'Rent the perfect car for your journey',
+  title: 'BuyWheels - Buy Your Next Car',
+  description: 'Browse and purchase premium vehicles with confidence',
 };
 
 export default function RootLayout({ children }) {

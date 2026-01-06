@@ -6,9 +6,9 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">About RentWheels</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">About BuyWheels</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Your trusted partner for premium car rental services
+            Your trusted partner for premium car buying
           </p>
         </div>
       </section>
@@ -21,16 +21,15 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
             <div className="prose prose-lg text-gray-700 space-y-4">
               <p>
-                RentWheels was founded with a simple mission: to make car rental accessible, 
-                affordable, and hassle-free for everyone. Since our inception, we've been 
+                BuyWheels was founded with a simple mission: to make buying a car accessible, 
+                transparent, and hassle-free for everyone. Since our inception, we've been 
                 committed to providing exceptional service and a wide selection of vehicles 
                 to meet every need and budget.
               </p>
               <p>
-                What started as a small local business has grown into a trusted name in the 
-                car rental industry. We've built our reputation on transparency, reliability, 
-                and putting our customers first. Every vehicle in our fleet is carefully 
-                maintained and regularly inspected to ensure your safety and comfort.
+                What started as a small local business has grown into a trusted name in car sales. 
+                We've built our reputation on transparency, reliability, and putting our customers first. 
+                Every vehicle we list is carefully vetted and inspected to ensure quality and peace of mind.
               </p>
             </div>
           </div>
@@ -39,10 +38,10 @@ export default function AboutPage() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              To provide exceptional car rental experiences by offering a diverse fleet of 
-              well-maintained vehicles, competitive pricing, and outstanding customer service. 
-              We believe everyone deserves access to reliable transportation, whether for a 
-              weekend getaway, business trip, or daily commute.
+              To provide exceptional car-buying experiences by offering a diverse catalog of 
+              vetted vehicles, clear pricing, and outstanding customer service. 
+              We believe everyone deserves access to a reliable car purchase journey, 
+              whether it's your first car, an upgrade, or a dream ride.
             </p>
           </div>
 
@@ -76,7 +75,7 @@ export default function AboutPage() {
 
           {/* Why Choose Us */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Choose RentWheels?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Why Choose BuyWheels?</h2>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">

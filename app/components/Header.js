@@ -8,7 +8,7 @@ export default function Header() {
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-blue-600 rounded-full"></div>
             <Link href="/" className="text-2xl font-bold text-blue-600">
-              RentWheels
+              BuyWheels
             </Link>
           </div>
           

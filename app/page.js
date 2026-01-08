@@ -1,18 +1,44 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CarCard from '@/components/CarCard';
-import { cars } from './data/cars';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('All Cars');
   const [countryFilter, setCountryFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const filterCars = (tab, country, search) => {
+  // Fetch cars from API on component mount
+  useEffect(() => {
+    const fetchCars = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('/api/cars');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        setCars(data);
+      } catch (err) {
+        console.error('Error fetching cars:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, []);
+
+  const filterCars = (tab, country, search, carList) => {
     const normalizedSearch = search.trim().toLowerCase();
 
-    const baseFiltered = cars.filter((car) => {
+    const baseFiltered = carList.filter((car) => {
       const countryMatch = country === 'All' ? true : car.country === country;
       return countryMatch;
     });
@@ -56,7 +82,7 @@ export default function Home() {
     });
   };
 
-  const filteredCars = filterCars(activeTab, countryFilter, searchTerm);
+  const filteredCars = filterCars(activeTab, countryFilter, searchTerm, cars);
 
   const tabs = ['All Cars', 'Economy', 'Luxury', 'SUV', 'Electric', 'Sports'];
   const countryTabs = [
@@ -64,6 +90,35 @@ export default function Home() {
     { label: 'USA', value: 'USA', flag: '🇺🇸' },
     { label: 'UK', value: 'UK', flag: '🇬🇧' },
   ];
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-xl">Loading cars...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-xl text-red-600 mb-4">Error: {error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="btn-primary"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -143,7 +198,20 @@ export default function Home() {
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">No cars found in this category.</p>
+            <p className="text-gray-600 text-lg">
+              {searchTerm 
+                ? `No cars found matching "${searchTerm}"` 
+                : 'No cars found in this category.'
+              }
+            </p>
+            {searchTerm && (
+              <button 
+                onClick={() => setSearchTerm('')}
+                className="mt-4 btn-primary"
+              >
+                Clear Search
+              </button>
+            )}
           </div>
         )}
       </section>

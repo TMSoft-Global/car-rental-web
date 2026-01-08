@@ -1,22 +1,89 @@
-import { cars } from '@/data/cars';
+// app/cars/[id]/page.js
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ActionButtons from './ActionButtons';
 
-export async function generateStaticParams() {
-  return cars.map((car) => ({
-    id: car.id.toString(),
-  }));
-}
+export default function CarDetailPage({ params }) {
+  const [car, setCar] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [id, setId] = useState(null);
 
-export default async function CarDetailPage({ params }) {
-  const { id } = await params;
-  const car = cars.find(c => c.id.toString() === id);
-  
-  if (!car) {
+  useEffect(() => {
+    // Unwrap the params promise
+    const unwrapParams = async () => {
+      try {
+        const unwrappedParams = await params;
+        setId(unwrappedParams.id);
+      } catch (err) {
+        console.error('Error unwrapping params:', err);
+        setError('Failed to load page parameters');
+        setLoading(false);
+      }
+    };
+
+    unwrapParams();
+  }, [params]);
+
+  useEffect(() => {
+    const fetchCar = async () => {
+      if (!id) return; // Don't fetch until we have the ID
+
+      try {
+        setLoading(true);
+        const response = await fetch('/api/cars');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        
+        const cars = await response.json();
+        const foundCar = cars.find(c => c.id.toString() === id);
+        
+        if (foundCar) {
+          setCar(foundCar);
+        } else {
+          throw new Error('Car not found');
+        }
+      } catch (err) {
+        console.error('Error fetching car:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCar();
+  }, [id]); // Fetch when id changes
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-xl">Loading car details...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error || !car) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-3xl font-bold mb-4">Car Not Found</h1>
+        <h1 className="text-3xl font-bold mb-4">
+          {error === 'Car not found' ? 'Car Not Found' : 'Error Loading Car'}
+        </h1>
+        <p className="text-gray-600 mb-6">
+          {error === 'Car not found' 
+            ? "The car you're looking for doesn't exist or is no longer available."
+            : `Error: ${error}`
+          }
+        </p>
         <Link href="/" className="btn-primary inline-block">
           Back to Home
         </Link>
@@ -33,14 +100,15 @@ export default async function CarDetailPage({ params }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {/* Car Image */}
+        {/* Car Image - Using next/image for optimization */}
         <div className="relative h-96 lg:h-[500px] rounded-xl overflow-hidden">
           <img
             src={car.image}
             alt={car.name}
-            fill
+            fill="true"
             className="object-cover"
-            priority
+            priority="true"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
 

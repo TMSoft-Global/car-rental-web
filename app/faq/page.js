@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'How do I contact support?',
-    a: 'Use the contact page, email info@buywheels.com, or call +1 (555) 123-4567. We respond as quickly as possible.'
+    a: 'Use the contact page, email info@buywheels.com, or call +1 4724005240. We respond as quickly as possible.'
   },
 ];
 

@@ -20,14 +20,6 @@
       "type": "login",
       "id": "1767572428921",
       "timestamp": "2026-01-05T00:20:28.921Z"
-    },
-    {
-      "email": "michaeltamekloe18.mt@gmail.com",
-      "password": "1234567777",
-      "rememberMe": false,
-      "type": "login",
-      "id": "1767572747149",
-      "timestamp": "2026-01-05T00:25:47.149Z"
     }
   ]
 }

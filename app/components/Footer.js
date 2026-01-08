@@ -21,7 +21,7 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-400">
               <li>Email: info@BuyWheels.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
+              <li>Phone: +1 4724005240</li>
               <li>24/7 Support Available</li>
             </ul>
           </div>

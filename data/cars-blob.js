@@ -4,6 +4,8 @@ import { put, del, list } from '@vercel/blob';
 let carsCache = null;
 let lastCacheUpdate = 1;
 
+const CACHE_VERSION = 1;
+
 // Get all cars from Blob
 export async function getCars() {
   const now = Date.now();

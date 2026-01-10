@@ -1,17 +1,27 @@
+// app/api/users/route.js - Updated for Blob
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-
-const usersFilePath = path.join(process.cwd(), 'data', 'users.json');
+import { getUsers, saveUser, saveLogin } from '@/data/users';
 
 export async function GET() {
   try {
-    const fileContents = fs.readFileSync(usersFilePath, 'utf8');
-    const data = JSON.parse(fileContents);
+    const data = await getUsers();
     return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to read users data' },
+      { error: 'Failed to fetch users' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request) {
+  try {
+    const userData = await request.json();
+    const newUser = await saveUser(userData);
+    return NextResponse.json(newUser, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to create user' },
       { status: 500 }
     );
   }
